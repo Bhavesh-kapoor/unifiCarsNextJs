@@ -1,10 +1,10 @@
-import BuyInSteps from '@/components/BuyInSteps';
-import CheckCarValue from '@/components/CheckCarValue';
-import CustomerReview from '@/components/CustomerReview';
-import HomeCarousel from '@/components/HomeCarousel'
-import HomeCarsCarousel from '@/components/HomeCarsCarousel';
-import Questions from '@/components/Questions';
-import TopBrandCard from '@/components/TopBrandCard';
+import BuyInSteps from '@/components/HomeComponents/BuyInSteps';
+import CheckCarValue from '@/components/HomeComponents/CheckCarValue';
+import CustomerReview from '@/components/HomeComponents/CustomerReview';
+import HomeCarousel from '@/components/HomeComponents/HomeCarousel'
+import HomeCarsCarousel from '@/components/HomeComponents/HomeCarsCarousel';
+import Questions from '@/components/HomeComponents/Questions';
+import TopBrandCard from '@/components/HomeComponents/TopBrandCard';
 import React from 'react'
 
 function index() {
