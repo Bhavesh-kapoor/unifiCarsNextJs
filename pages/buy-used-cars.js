@@ -47,52 +47,52 @@ const buyUsedCars = () => {
                   emulateTouch={true}
                   showThumbs={false}
                   infiniteLoop={true}
-                  // renderThumbs={() =>
-                  //   car.lead.images ? car.lead.images.map((img, idx) => (
-                  //     <div key={idx} className="w-full rounded-xl h-10 relative">
-                  //       <Image
-                  //         src={img.image}
-                  //         layout="fill"
-                  //         objectFit="cover"
-                  //         alt="logo"
-                  //         priority={index == 0}
-                  //       ></Image>
-                  //     </div>
-                  //   )) : <img/>
-                  // }
+                // renderThumbs={() =>
+                //   car.lead.images ? car.lead.images.map((img, idx) => (
+                //     <div key={idx} className="w-full rounded-xl h-10 relative">
+                //       <Image
+                //         src={img.image}
+                //         layout="fill"
+                //         objectFit="cover"
+                //         alt="logo"
+                //         priority={index == 0}
+                //       ></Image>
+                //     </div>
+                //   )) : <img/>
+                // }
                 >
                   {car.lead.images ? car.lead.images.map((img, idx) => (
-                    <div   key={idx} className=""><Image
+                    <div key={idx} className=""><Image
                       src={img.image}
                       // alt={`${product.title} preview ${idx}`}
-                      style={{"borderRadius":"0.5rem"}}
+                      style={{ "borderRadius": "0.5rem" }}
                       width={800}
                       height={800}
                       priority={true}
                       alt="car Image"
                     ></Image></div>
-                  )) : <img/>}
+                  )) : <img />}
                 </Carousel>
               </div>
               <div className="cursor-pointer">
                 <div className="flex flex-col ">
-                    <Link
-                      href={`/cars/${car.lead.id}`}
-                      className="my-2"
-                    >
-                  <h5 className="text-lg font-bold ">
+                  <Link
+                    href={`/cars/${car.lead.id}`}
+                    className="my-2"
+                  >
+                    <h5 className="text-lg font-bold hover:text-blue-900 ">
                       {car.lead.brand} - {car.lead.model}
-                    <p className="text-sm font-normal">VXI 1.2 Manual </p>
-                  </h5>
-                  <div className="flex justify-between">
-                    <div>
-                      <span className="whitespace-nowrap text-xl font-bold">
-                        ₹ {(parseInt(car.lead.selling_amount)).toLocaleString("en-IN")}
-                      </span>
-                      <span className="font-semibold ml-2 line-through text-orange-500"> ₹{(parseInt(car.lead.selling_amount) + ((parseInt(car.lead.selling_amount)) / 10)).toLocaleString("en-IN")} </span>
+                      <p className="text-sm font-normal">VXI 1.2 Manual </p>
+                    </h5>
+                    <div className="flex justify-between">
+                      <div>
+                        <span className="whitespace-nowrap text-xl font-bold">
+                          ₹ {(parseInt(car.lead.selling_amount)).toLocaleString("en-IN")}
+                        </span>
+                        <span className="font-semibold ml-2 line-through text-orange-500"> ₹{(parseInt(car.lead.selling_amount) + ((parseInt(car.lead.selling_amount)) / 10)).toLocaleString("en-IN")} </span>
+                      </div>
                     </div>
-                  </div>
-                    </Link>
+                  </Link>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mt-1 text-xs">

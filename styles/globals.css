@@ -5,8 +5,10 @@
 * {
   padding: 0;
   margin: 0;
-  font-weight: Regular 400;
+font-weight: bold;
+  /* font-weight: Regular 400;
   font-family: "Roboto", sans-serif;
   font-family: "Roboto Slab", serif;
-  font-family: "Bree Serif", serif;
+  font-family: "Bree Serif", serif; */
+  font-family: 'Poppins', sans-serif;
 }

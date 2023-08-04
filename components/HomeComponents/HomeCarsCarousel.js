@@ -374,7 +374,7 @@ const HomeCarsCarousel = () => {
                     </Paper>
                     
                 </Carousel>
-                <div><h5 className='text-base text-blue-900'>Still Confuse Check Our Inventory ? <Link href={"/sellUsedCars"} className='text-orange-500'>Browse All Cars</Link></h5></div>
+                <div><h5 className='text-base text-blue-900'>Still Confuse Check Our Inventory ? <Link href={"/sell-used-cars"} className='text-orange-500'>Browse All Cars</Link></h5></div>
             </div>
         </div>
     )

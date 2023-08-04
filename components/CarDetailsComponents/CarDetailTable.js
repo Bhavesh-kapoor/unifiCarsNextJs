@@ -29,7 +29,7 @@ const CarDetailTable = (props) => {
 
     return (
         <div className='border rounded-xl bg-gray-50 opacity-80 uppercase'>
-            <div className='w-11/12 mx-auto grid grid-cols-3 gap-8 py-4'>
+            <div className='w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 py-4'>
                 <div className='flex'>
                     <div><BiCalendar className="flex-none mr-2 my-1" /></div>
                     <div className='flex flex-col gap-1 text-base font-normal text-gray-600'>

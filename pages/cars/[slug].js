@@ -51,39 +51,39 @@ const Car = () => {
     }, [router.isReady]);
 
 
-    const HandleSendOtp = async () => {
-        if (UserNumber.current.value != "" && (UserNumber.current.value).match(/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/)) {
-            setMessage([])
-            setLoader(true)
-            const phoneNumer = UserNumber.current.value
-            const data = {
-                mobile: phoneNumer,
-                lead_id: slug
-            }
-            const url = `https://crm.unificars.com/api/webotp`
-            const fetchOtpRes = await fetch(url, {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-type': 'application/json',
-                },
-            })
-            const jsonResponse = await fetchOtpRes.json()
-            if (jsonResponse.code != 200) {
-                setLoader(false)
-                setValidateOtp(false)
-                setMessage(jsonResponse)
-            } else {
-                setMessage(jsonResponse)
-                setLoader(false)
-                setValidateOtp(true)
-            }
-        }
-        else {
-            setLoader(false)
-            setMessage({ code: 400, status: ["Please Enter a Valid Number"] })
-        }
-    }
+    // const HandleSendOtp = async () => {
+    //     if (UserNumber.current.value != "" && (UserNumber.current.value).match(/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/)) {
+    //         setMessage([])
+    //         setLoader(true)
+    //         const phoneNumer = UserNumber.current.value
+    //         const data = {
+    //             mobile: phoneNumer,
+    //             lead_id: slug
+    //         }
+    //         const url = `https://crm.unificars.com/api/webotp`
+    //         const fetchOtpRes = await fetch(url, {
+    //             method: 'POST',
+    //             body: JSON.stringify(data),
+    //             headers: {
+    //                 'Content-type': 'application/json',
+    //             },
+    //         })
+    //         const jsonResponse = await fetchOtpRes.json()
+    //         if (jsonResponse.code != 200) {
+    //             setLoader(false)
+    //             setValidateOtp(false)
+    //             setMessage(jsonResponse)
+    //         } else {
+    //             setMessage(jsonResponse)
+    //             setLoader(false)
+    //             setValidateOtp(true)
+    //         }
+    //     }
+    //     else {
+    //         setLoader(false)
+    //         setMessage({ code: 400, status: ["Please Enter a Valid Number"] })
+    //     }
+    // }
     // 8595529873
     const HandleVereifyOtp = async () => {
         if (OtpVerify.current.value != "") {
@@ -186,7 +186,7 @@ const Car = () => {
                     <div>
                         <HowItWork />
                     </div>
-                    <OtpModal showModal={showModal} setShowModal={setShowModal} />
+                    <OtpModal showModal={showModal} setShowModal={setShowModal} carId={slug}/>
 
                 </>}
         </>

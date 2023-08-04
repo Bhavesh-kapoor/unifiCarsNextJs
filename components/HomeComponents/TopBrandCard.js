@@ -31,7 +31,7 @@ useEffect(() => {
                     }) : ''}
                     
                 </div>
-                <div className='mt-2'><h5 className='text-base text-blue-900'>Do You Want To Sell Car ? <Link href={"/sellUsedCars"} className='text-orange-500'>Click Here</Link></h5></div>
+                <div className='mt-2'><h5 className='text-base text-blue-900'>Do You Want To Sell Car ? <Link href={"/sell-used-cars"} className='text-orange-500'>Click Here</Link></h5></div>
             </div>
 
         </div>

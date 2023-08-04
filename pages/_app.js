@@ -6,7 +6,8 @@ export default function App({ Component, pageProps }) {
   return(
     <>
     <Navbar/>
-   <Component {...pageProps} />
+    <div className='h-14 md:h-0'></div>
+   <Component {...pageProps}/>
    <Footer/>
     </>
 )}
