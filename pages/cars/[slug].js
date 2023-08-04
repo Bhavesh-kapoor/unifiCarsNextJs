@@ -12,6 +12,8 @@ import HowItWork from '@/components/CarDetailsComponents/HowItWork';
 import CarDetailTable from '@/components/CarDetailsComponents/CarDetailTable';
 import OtpModal from '@/components/CarDetailsComponents/OtpModal';
 import Questions from '@/components/HomeComponents/Questions';
+import EnquiryModal from '@/components/CarDetailsComponents/EnquiryModal';
+import MoblieCarDetailsHeader from '@/components/CarDetailsComponents/MoblieCarDetailsHeader';
 
 
 
@@ -22,6 +24,8 @@ const Car = () => {
     const [Car, setCar] = useState("");
     const [ShowSpinner, setShowSpinner] = useState(true)
     const [showModal, setShowModal] = useState(false);
+    const [showEnquiryModal, setShowEnquiryModal] = useState(false);
+
     // const [ValidateOtp, setValidateOtp] = useState(false);
     // const [Loader, setLoader] = useState(false);
     // const [Message, setMessage] = useState({});
@@ -85,48 +89,48 @@ const Car = () => {
     //     }
     // }
     // 8595529873
-    const HandleVereifyOtp = async () => {
-        if (OtpVerify.current.value != "") {
-            setMessage([])
-            setLoader(true)
-            const phoneNumer = UserNumber.current.value
-            const otp = OtpVerify.current.value
-            const data = {
-                mobile: phoneNumer,
-                lead_id: slug,
-                otp: otp
-            }
-            const url = `https://crm.unificars.com/api/webotpverify`
-            const fetchOtpRes = await fetch(url, {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-type': 'application/json',
-                },
-            })
-            const jsonResponse = await fetchOtpRes.json()
-            console.log(jsonResponse)
-            if (jsonResponse.code == 200) {
-                setMessage(jsonResponse)
-                if (jsonResponse.link) {
-                    setMessage({ code: 200, status: ["Please Wait while Fecthing a Report"] })
-                    router.push(jsonResponse.link)
-                    setTimeout(() => {
-                        setShowModal(false)
-                        setMessage(false)
-                        setLoader(false)
-                        UserNumber.current.value = ""
-                        OtpVerify.current.value = ""
-                    }, 5000);
-                }
-                // setValidateOtp(true)
-            } else {
-                setLoader(false)
-                setMessage(jsonResponse)
-                setValidateOtp(true)
-            }
-        }
-    }
+    // const HandleVereifyOtp = async () => {
+    //     if (OtpVerify.current.value != "") {
+    //         setMessage([])
+    //         setLoader(true)
+    //         const phoneNumer = UserNumber.current.value
+    //         const otp = OtpVerify.current.value
+    //         const data = {
+    //             mobile: phoneNumer,
+    //             lead_id: slug,
+    //             otp: otp
+    //         }
+    //         const url = `https://crm.unificars.com/api/webotpverify`
+    //         const fetchOtpRes = await fetch(url, {
+    //             method: 'POST',
+    //             body: JSON.stringify(data),
+    //             headers: {
+    //                 'Content-type': 'application/json',
+    //             },
+    //         })
+    //         const jsonResponse = await fetchOtpRes.json()
+    //         console.log(jsonResponse)
+    //         if (jsonResponse.code == 200) {
+    //             setMessage(jsonResponse)
+    //             if (jsonResponse.link) {
+    //                 setMessage({ code: 200, status: ["Please Wait while Fecthing a Report"] })
+    //                 router.push(jsonResponse.link)
+    //                 setTimeout(() => {
+    //                     setShowModal(false)
+    //                     setMessage(false)
+    //                     setLoader(false)
+    //                     UserNumber.current.value = ""
+    //                     OtpVerify.current.value = ""
+    //                 }, 5000);
+    //             }
+    //             // setValidateOtp(true)
+    //         } else {
+    //             setLoader(false)
+    //             setMessage(jsonResponse)
+    //             setValidateOtp(true)
+    //         }
+    //     }
+    // }
     return (
 
         <>
@@ -138,6 +142,9 @@ const Car = () => {
                     </div>
                 </div>)
                 : <>
+                <div className='sticky top-12 md:hidden bg-blue-100 z-50 text-xl p-4'>
+                    <MoblieCarDetailsHeader Car={Car} setShowEnquiryModal={setShowEnquiryModal}/>
+                </div>
                     <div className='md:w-11/12 grid grid-cols-1 md:grid-cols-3 gap-2 mx-auto'>
                         <div className='col-span-2 p-8'>
                             <CarImageCarousel images={Car.images} />
@@ -172,8 +179,8 @@ const Car = () => {
                             </div> */}
                         </div>
                         <div>
-                            <div className='py-8  sticky top-5'>
-                                <CarDetailsBox Car={Car} showModal={showModal} setShowModal={setShowModal} />
+                            <div className='md:py-8 p-4 sticky top-5'>
+                                <CarDetailsBox Car={Car} showModal={showModal} setShowModal={setShowModal} setShowEnquiryModal={setShowEnquiryModal}/>
                             </div>
                         </div>
                     </div>
@@ -187,6 +194,7 @@ const Car = () => {
                         <HowItWork />
                     </div>
                     <OtpModal showModal={showModal} setShowModal={setShowModal} carId={slug}/>
+                    <EnquiryModal carId={slug} showEnquiryModal={showEnquiryModal} setShowEnquiryModal={setShowEnquiryModal}/>
 
                 </>}
         </>

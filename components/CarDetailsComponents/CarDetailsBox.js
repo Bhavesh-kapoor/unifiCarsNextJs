@@ -5,8 +5,8 @@ import { BsCardChecklist, BsCashCoin, BsWhatsapp } from 'react-icons/bs';
 import { TiTick } from 'react-icons/ti';
 
 const CarDetailsBox = (props) => {
-    const {Car ,showModal ,setShowModal}=props
-    console.log("car details Box" , Car)
+    const {Car ,showModal ,setShowModal , setShowEnquiryModal}=props
+    // console.log("car details Box" , Car)
     return (
         <Paper elevation={2} className='p-2'>
             <div>
@@ -47,7 +47,7 @@ const CarDetailsBox = (props) => {
                 <div className="flex justify-end my-2 gap-4 col-span-2">
                     <button className="flex  text-white bg-green-500 py-2 px-2 focus:outline-none shadow text-sm rounded-xl" onClick={() => setShowModal(!showModal)}><BsCardChecklist className="my-1 mr-2" /> Download Report </button>
                     {/* router.push({`/report/${slug}`}) once user enter their details */}
-                    <button className="flex text-white bg-orange-500 py-2 px-2 focus:outline-none shadow text-sm  rounded-xl">Book a Test Drive Now <AiOutlineArrowRight className="my-1 mx-1" /></button>
+                    <button className="flex text-white bg-orange-500 py-2 px-2 focus:outline-none shadow text-sm  rounded-xl" onClick={() => setShowEnquiryModal(true)}>Book a Test Drive Now <AiOutlineArrowRight className="my-1 mx-1" /></button>
 
                 </div>
 

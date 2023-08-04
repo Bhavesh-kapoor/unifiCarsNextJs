@@ -26,8 +26,9 @@ const CarPageRelatedCars = () => {
     }
 
     return (
-        <div className='w-11/12 mx-auto my-4 py-8'>
-            <h3 className='text-4xl text-blue-900 uppercase ml-1'>Cars You Also LIKE</h3>
+        <div className='w-11/12 mx-auto my-4 py-4 md:py-8'>
+            <h3 className='text-2xl md:text-4xl  text-blue-900 uppercase ml-1'>Cars You Also LIKE</h3>
+            <hr/>
             <Carousel responsive={responsive} className='z-0 py-4'>
                 <Paper elevation={4} className='bg-gray-100 rounded mx-2 overflow-hidden transform transition-transform duration-300 hover:scale-105'>
                     <div>
