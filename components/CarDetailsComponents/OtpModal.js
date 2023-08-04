@@ -67,7 +67,8 @@ export default function TransitionsModal(props) {
     const fetchOtpRes = await sendOtp()
       const jsonResponse = await fetchOtpRes.json()
       if (jsonResponse) {
-          setOptNotRevieve(true)}
+          setOptNotRevieve(true)
+        }
   }
 
   const HandleFormNumberSubmit = async (e) => {

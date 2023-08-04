@@ -23,7 +23,7 @@ const CarImageCarousel = (props) => {
             </Head>
             <Paper elevation={0}>
                 <Carousel
-                    showStatus={false}
+                    showStatus={true}
                     showArrows={true}
                     autoPlay={true}
                     swipeable={true}

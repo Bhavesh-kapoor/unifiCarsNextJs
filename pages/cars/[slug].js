@@ -26,11 +26,6 @@ const Car = () => {
     const [showModal, setShowModal] = useState(false);
     const [showEnquiryModal, setShowEnquiryModal] = useState(false);
 
-    // const [ValidateOtp, setValidateOtp] = useState(false);
-    // const [Loader, setLoader] = useState(false);
-    // const [Message, setMessage] = useState({});
-    // const UserNumber = useRef("")
-    // const OtpVerify = useRef("")
 
     const fetchCarDetails = async () => {
         const params = { "lead_id": slug }
@@ -55,82 +50,8 @@ const Car = () => {
     }, [router.isReady]);
 
 
-    // const HandleSendOtp = async () => {
-    //     if (UserNumber.current.value != "" && (UserNumber.current.value).match(/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/)) {
-    //         setMessage([])
-    //         setLoader(true)
-    //         const phoneNumer = UserNumber.current.value
-    //         const data = {
-    //             mobile: phoneNumer,
-    //             lead_id: slug
-    //         }
-    //         const url = `https://crm.unificars.com/api/webotp`
-    //         const fetchOtpRes = await fetch(url, {
-    //             method: 'POST',
-    //             body: JSON.stringify(data),
-    //             headers: {
-    //                 'Content-type': 'application/json',
-    //             },
-    //         })
-    //         const jsonResponse = await fetchOtpRes.json()
-    //         if (jsonResponse.code != 200) {
-    //             setLoader(false)
-    //             setValidateOtp(false)
-    //             setMessage(jsonResponse)
-    //         } else {
-    //             setMessage(jsonResponse)
-    //             setLoader(false)
-    //             setValidateOtp(true)
-    //         }
-    //     }
-    //     else {
-    //         setLoader(false)
-    //         setMessage({ code: 400, status: ["Please Enter a Valid Number"] })
-    //     }
-    // }
     // 8595529873
-    // const HandleVereifyOtp = async () => {
-    //     if (OtpVerify.current.value != "") {
-    //         setMessage([])
-    //         setLoader(true)
-    //         const phoneNumer = UserNumber.current.value
-    //         const otp = OtpVerify.current.value
-    //         const data = {
-    //             mobile: phoneNumer,
-    //             lead_id: slug,
-    //             otp: otp
-    //         }
-    //         const url = `https://crm.unificars.com/api/webotpverify`
-    //         const fetchOtpRes = await fetch(url, {
-    //             method: 'POST',
-    //             body: JSON.stringify(data),
-    //             headers: {
-    //                 'Content-type': 'application/json',
-    //             },
-    //         })
-    //         const jsonResponse = await fetchOtpRes.json()
-    //         console.log(jsonResponse)
-    //         if (jsonResponse.code == 200) {
-    //             setMessage(jsonResponse)
-    //             if (jsonResponse.link) {
-    //                 setMessage({ code: 200, status: ["Please Wait while Fecthing a Report"] })
-    //                 router.push(jsonResponse.link)
-    //                 setTimeout(() => {
-    //                     setShowModal(false)
-    //                     setMessage(false)
-    //                     setLoader(false)
-    //                     UserNumber.current.value = ""
-    //                     OtpVerify.current.value = ""
-    //                 }, 5000);
-    //             }
-    //             // setValidateOtp(true)
-    //         } else {
-    //             setLoader(false)
-    //             setMessage(jsonResponse)
-    //             setValidateOtp(true)
-    //         }
-    //     }
-    // }
+
     return (
 
         <>
