@@ -70,7 +70,7 @@ const Car = () => {
                         <div className='col-span-2 p-8'>
                             <CarImageCarousel images={Car.images} />
                             <div className='flex justify-end mx-6'>
-                                <button className="mb-6 hover:text-blue-600 flex gap-2 shadow p-2 rounded-xl"><GrGallery className='my-1' />View All 38 Images</button>
+                                <Link href={`/car-images/${slug}`} className="mb-6 hover:text-blue-600 flex gap-2 shadow p-2 rounded-xl"><GrGallery className='my-1' />View All 38 Images</Link>
                             </div>
                             <CarDetailTable CarDetails={Car.lead} />
                             {/* <div className=' grid grid-cols-1 md:grid-cols-3'>

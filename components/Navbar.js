@@ -72,7 +72,7 @@ function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', md: 'block' ,color:"#000" } }}
           >
-            <Link href={"/"}><img src='../logo.png' className='h-20' /> </Link>
+            <div><img src='../logo.png' className='h-20' /> </div>
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'block' } }} >
             

@@ -29,6 +29,8 @@ const EnquiryModal = (props) => {
 
   const handleClose = () => {
     setShowEnquiryModal(false)
+    setUserInputPage(true)
+    setOptNotRevieve(false)
     setUserDetails({ name: "", email: "", phone: "" })
   }
 
@@ -36,18 +38,18 @@ const EnquiryModal = (props) => {
     e.preventDefault()
   }
 
-  const HandleReSendOtp=()=>{
+  const HandleReSendOtp = () => {
     // send otp again
     setLoading(false)
     setOptNotRevieve(true)
   }
 
-  const sendOtp=async()=>{
-    const data = {...userDetails,"lead_id":carId}
+  const sendOtp = async () => {
+    const data = { ...userDetails, "lead_id": carId }
     const url = `https://unificars.com/api/downloadenquiry`
-   const resdata= await fetch(url, {
+    const resdata = await fetch(url, {
       method: 'POST',
-      body: JSON.stringify(),
+      body: JSON.stringify(data),
       headers: {
         'Content-type': 'application/json',
       },
@@ -58,16 +60,17 @@ const EnquiryModal = (props) => {
   const HandleFormSubmit = async (e) => {
     e.preventDefault()
     const { name, email, phone } = userDetails
-    if (name != ""&& email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i) && phone.match(/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/)) {
-     setLoading(true)
+    if (name != "" && email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i) && phone.match(/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/)) {
+      setLoading(true)
       const sendOtpRes = await sendOtp()
       const jsonResponse = await sendOtpRes.json()
-      if(jsonResponse.code==200){
+      console.log(jsonResponse)
+      if (jsonResponse.code == 200) {
         setMessage({})
         setLoading(false)
         setUserInputPage(false)
       }
-      else{
+      else {
         setLoading(false)
         setMessage(jsonResponse)
       }
@@ -113,19 +116,19 @@ const EnquiryModal = (props) => {
                     <div>
                       <label>NAME</label>
                     </div>
-                    <input type='text' name='name' value={userDetails.name} onChange={(e) =>{setMessage({}) ; HandleFormChange(e)}} className="placeholder:font-normal font-semibold w-full bg-gray-50 rounded-xl p-2 border-2 border-slate-400 outline-green-400 outline-1 mt-1" placeholder='Enter Your Name' />
+                    <input type='text' name='name' value={userDetails.name} onChange={(e) => { setMessage({}); HandleFormChange(e) }} className="placeholder:font-normal font-semibold w-full bg-gray-50 rounded-xl p-2 border-2 border-slate-400 outline-green-400 outline-1 mt-1" placeholder='Enter Your Name' />
                   </div>
                   <div>
                     <div>
                       <label>E-MAIL</label>
                     </div>
-                    <input type='email' name='email' value={userDetails.email} onChange={(e) => {setMessage({}) ;HandleFormChange(e)}} className="placeholder:font-normal font-semibold w-full bg-gray-50 rounded-xl p-2 border-2 border-slate-400 outline-green-400 outline-1 mt-1" placeholder='Enter Your E-Mail' />
+                    <input type='email' name='email' value={userDetails.email} onChange={(e) => { setMessage({}); HandleFormChange(e) }} className="placeholder:font-normal font-semibold w-full bg-gray-50 rounded-xl p-2 border-2 border-slate-400 outline-green-400 outline-1 mt-1" placeholder='Enter Your E-Mail' />
                   </div>
                   <div>
                     <div>
                       <label htmlFor='phone'>PHONE</label>
                     </div>
-                    <input type='number' name='phone' value={userDetails.phone} onChange={(e) =>{setMessage({}) ; HandleFormChange(e)}} className="placeholder:font-normal font-semibold w-full bg-gray-50 rounded-xl p-2  mt-1 border-2 border-slate-400 outline-green-400 outline-1" placeholder='Enter Your Phone' />
+                    <input type='number' name='phone' value={userDetails.phone} onChange={(e) => { setMessage({}); HandleFormChange(e) }} className="placeholder:font-normal font-semibold w-full bg-gray-50 rounded-xl p-2  mt-1 border-2 border-slate-400 outline-green-400 outline-1" placeholder='Enter Your Phone' />
                     <p className='text-xs mt-2 text-gray-400'>We'll never share your details with anyone else.</p>
                     {messages && messages.code ? <div className={`${messages.code == 200 ? "text-green-500" : "text-red-500"}`}>{messages.status.map((message, index) => { return <p className="text-sm" key={index} >{message}</p> })} </div> : <></>}
                   </div>
